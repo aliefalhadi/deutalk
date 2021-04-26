@@ -1,5 +1,6 @@
 import 'package:deutalk/view/Home.dart';
 import 'package:deutalk/view/Kamus/Index.dart';
+import 'package:deutalk/view/latihan/IndexLatihan.dart';
 import 'package:flutter/material.dart';
 
 class RouterApp {
@@ -21,10 +22,8 @@ class RouterApp {
       //       builder: (_) => ModulIndex()
       //   );
       //
-      // case '/modul/latihan':
-      //   return MaterialPageRoute(
-      //       builder: (_) => ModulLatihan()
-      //   );
+      case '/modul/latihan':
+        return MaterialPageRoute(builder: (_) => IndexLatihan());
       //
       // case '/modul/latihan/soal':
       //   Map dataProgresLatihanModul= settings.arguments;

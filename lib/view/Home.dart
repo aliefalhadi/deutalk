@@ -14,14 +14,17 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
         elevation: 0,
-        title: Text(Dictionary.appName),
+        title: Text(
+          Dictionary.appName,
+          style: TextStyle(color: Colors.black),
+        ),
         actions: [
           FlatButton.icon(
               onPressed: () {},
               icon: Icon(
                 Icons.menu,
-                color: AppTheme.white,
               ),
               label: Container())
         ],
@@ -32,14 +35,27 @@ class _HomeState extends State<Home> {
           children: [
             Container(
                 margin: EdgeInsets.symmetric(vertical: 16),
-                child: Text(
-                  "Find your favorite course here",
-                  style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Halo Alief,",
+                      style:
+                          TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      height: 8,
+                    ),
+                    Text(
+                      "Ayo tingkatkan skill bahasa jerman kamu",
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                  ],
                 )),
             Container(
               child: Container(
                 margin: EdgeInsets.only(top: 8),
-                padding: EdgeInsets.all(8),
+                padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                 height: 50,
                 width: double.infinity,
                 decoration: BoxDecoration(
@@ -47,18 +63,19 @@ class _HomeState extends State<Home> {
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Icon(
-                      Icons.search,
-                      color: Colors.grey,
-                    ),
-                    SizedBox(
-                      width: 8,
-                    ),
                     Text(
                       "Cari kosa kata",
                       style: TextStyle(color: Colors.grey),
-                    )
+                    ),
+                    CircleAvatar(
+                      backgroundColor: Colors.deepPurpleAccent,
+                      child: Icon(
+                        Icons.search,
+                        color: Colors.white,
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -67,7 +84,7 @@ class _HomeState extends State<Home> {
               height: 16,
             ),
             Container(
-              margin: EdgeInsets.symmetric(vertical: 24),
+              margin: EdgeInsets.symmetric(vertical: 16),
               child: Text(
                 "Your Lesson",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
@@ -83,6 +100,7 @@ class _HomeState extends State<Home> {
                       MenuContainer(
                         title: Dictionary.menuKamus,
                         image: Dictionary.imageMenuKamus,
+                        color: Colors.deepPurple,
                         onTap: () {
                           Navigator.pushNamed(context, '/kamus');
                         },
@@ -90,6 +108,7 @@ class _HomeState extends State<Home> {
                       MenuContainer(
                         title: Dictionary.menuBelajar,
                         image: Dictionary.imageMenuBelajar,
+                        color: Colors.blueAccent,
                         onTap: () {
                           print('halo');
                         },
@@ -105,13 +124,15 @@ class _HomeState extends State<Home> {
                       MenuContainer(
                         title: Dictionary.menuLatihan,
                         image: Dictionary.imageMenuLatihan,
+                        color: Colors.pink,
                         onTap: () {
-                          print('halo');
+                          Navigator.pushNamed(context, '/modul/latihan');
                         },
                       ),
                       MenuContainer(
                         title: Dictionary.menuPanduan,
                         image: Dictionary.imageMenuPanduan,
+                        color: Colors.indigo,
                         onTap: () {
                           print('halo');
                         },
@@ -132,37 +153,49 @@ class MenuContainer extends StatelessWidget {
   final String image;
   final String title;
   final Function onTap;
+  final Color color;
 
-  MenuContainer({this.image, this.title, this.onTap});
+  MenuContainer({this.image, this.title, this.onTap, this.color});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.all(16),
-        width: MediaQuery.of(context).size.width / 2.7,
-        height: 150,
+        width: MediaQuery.of(context).size.width / 2.5,
+        height: 170,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: color,
           borderRadius: BorderRadius.circular(20),
         ),
-        child: Column(
+        child: Stack(
           children: [
-            SizedBox(
-              height: 8,
+            Positioned(
+              top: 20,
+              left: 10,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                  Text(
+                    "Daftar kata",
+                    style: TextStyle(fontSize: 11, color: Colors.white),
+                  )
+                ],
+              ),
             ),
-            Image.asset(
-              image,
-              width: 60,
-            ),
-            SizedBox(
-              height: 16,
-            ),
-            Text(
-              title,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            )
+            Align(
+                alignment: Alignment.bottomCenter,
+                child: Image.asset(
+                  'assets/images/kamus3.png',
+                  width: 120,
+                ))
           ],
         ),
       ),

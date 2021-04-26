@@ -27,7 +27,8 @@ class DaftarKataModel {
         data: json["data"] == null
             ? null
             : List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
-        totalItems: json["totalItems"] == null ? null : json["totalItems"],
+        totalItems:
+            json["totalItems"] == null ? null : json["totalItems"].toString(),
       );
 
   Map<String, dynamic> toJson() => {
@@ -35,7 +36,7 @@ class DaftarKataModel {
         "data": data == null
             ? null
             : List<dynamic>.from(data.map((x) => x.toJson())),
-        "totalItems": totalItems == null ? null : totalItems,
+        "totalItems": totalItems == null ? null : totalItems.toString(),
       };
 }
 
