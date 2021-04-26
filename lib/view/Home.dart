@@ -63,7 +63,9 @@ class _HomeState extends State<Home> {
                 ),
               ),
             ),
-            SizedBox(height: 16,),
+            SizedBox(
+              height: 16,
+            ),
             Container(
               margin: EdgeInsets.symmetric(vertical: 24),
               child: Text(
@@ -81,14 +83,14 @@ class _HomeState extends State<Home> {
                       MenuContainer(
                         title: Dictionary.menuKamus,
                         image: Dictionary.imageMenuKamus,
-                        onTap: (){
-                          print('halo');
+                        onTap: () {
+                          Navigator.pushNamed(context, '/kamus');
                         },
                       ),
                       MenuContainer(
                         title: Dictionary.menuBelajar,
                         image: Dictionary.imageMenuBelajar,
-                        onTap: (){
+                        onTap: () {
                           print('halo');
                         },
                       ),
@@ -103,14 +105,14 @@ class _HomeState extends State<Home> {
                       MenuContainer(
                         title: Dictionary.menuLatihan,
                         image: Dictionary.imageMenuLatihan,
-                        onTap: (){
+                        onTap: () {
                           print('halo');
                         },
                       ),
                       MenuContainer(
                         title: Dictionary.menuPanduan,
                         image: Dictionary.imageMenuPanduan,
-                        onTap: (){
+                        onTap: () {
                           print('halo');
                         },
                       ),

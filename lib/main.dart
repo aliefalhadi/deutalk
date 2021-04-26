@@ -1,8 +1,12 @@
+import 'package:deutalk/config/locator.dart';
+import 'package:deutalk/config/routes.dart';
 import 'package:deutalk/view/Home.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  setupLocator();
   runApp(MyApp());
 }
 
@@ -18,6 +22,7 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.latoTextTheme(Theme.of(context).textTheme),
       ),
       home: Home(),
+      onGenerateRoute: RouterApp.generateRoute,
     );
   }
 }

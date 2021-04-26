@@ -25,6 +25,25 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.0
   google_fonts: ^1.1.2
+  provider:
+  localstorage: ^3.0.0
+  shared_preferences:
+  toast:
+  intl:
+  get_it: ^5.0.1
+  page_transition: ^1.1.6
+  shimmer: ^1.1.1
+  badges:
+  dio:
+  dio_http_cache:
+  flutter_onboard: ^0.1.0
+  flutter_tts:
+  speech_to_text: ^3.1.0
+  avatar_glow:
+  scroll_snap_list: ^0.5.1
+  percent_indicator: ^2.1.8
+  material_dialogs: ^0.0.4
+  google_sign_in: ^4.5.6
 
 dev_dependencies:
   flutter_test:
