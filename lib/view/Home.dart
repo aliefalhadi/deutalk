@@ -193,7 +193,7 @@ class MenuContainer extends StatelessWidget {
             Align(
                 alignment: Alignment.bottomCenter,
                 child: Image.asset(
-                  'assets/images/kamus3.png',
+                  image,
                   width: 120,
                 ))
           ],
