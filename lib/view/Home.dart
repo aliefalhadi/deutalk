@@ -110,7 +110,7 @@ class _HomeState extends State<Home> {
                         image: Dictionary.imageMenuBelajar,
                         color: Colors.blueAccent,
                         onTap: () {
-                          print('halo');
+                          Navigator.pushNamed(context, '/modul');
                         },
                       ),
                     ],
