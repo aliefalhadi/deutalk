@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "823595025718",
+    "project_id": "deutalk",
+    "storage_bucket": "deutalk.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:823595025718:android:8faa2652cee5efcf185f97",
+        "android_client_info": {
+          "package_name": "com.example.deutalk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "823595025718-pit9gi4oa29ibh6735k3trnvesgp5qe8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.deutalk",
+            "certificate_hash": "6b912b4e77345cb590eac755ccd247a852717364"
+          }
+        },
+        {
+          "client_id": "823595025718-tbe2ekbiiq28ruc4b008qv99jneqj2c2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.deutalk",
+            "certificate_hash": "4601eebbafefc8b3916757b22b8260a2092e7cc7"
+          }
+        },
+        {
+          "client_id": "823595025718-u58jbj4qpt44om5ufmgv0ubk5jpjnhks.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.deutalk",
+            "certificate_hash": "d1c60eff611a4f1481661fce7ee9983c13ed655a"
+          }
+        },
+        {
+          "client_id": "823595025718-1lmmbi137i6hmsm152spqijm3k0orn0v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAV3Ggr3YYQnDosjhwgcqQsaIm1S9O5GIk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "823595025718-1lmmbi137i6hmsm152spqijm3k0orn0v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

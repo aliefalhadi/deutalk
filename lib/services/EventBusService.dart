@@ -1,12 +1,12 @@
 import 'package:deutalk/model/DaftarModulBelajarModel.dart';
-// import 'package:deutalk/model/DaftarSoalModulLatihanModel.dart';
+import 'package:deutalk/model/DaftarSoalModulLatihanModel.dart';
 
 class EventBusService {
   // modul belajar
   DaftarModulBelajarModel daftarModulBelajarModel;
 
   //soal latihan
-  // DaftarSoalModulLatihanModel daftarSoalModulLatihanModel;
+  DaftarSoalModulLatihanModel daftarSoalModulLatihanModel;
 
   //simpan data soal yang dikerjaan user per modul
   // List progressLatihanUser = [

@@ -1,8 +1,8 @@
-import 'dart:developer';
-
-import 'package:deutalk/config/appTheme.dart';
+import 'package:deutalk/config/locator.dart';
 import 'package:deutalk/constants/Dictionary.dart';
 import 'package:flutter/material.dart';
+import 'package:deutalk/provider/LoginProvider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -10,9 +10,25 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
+  String name = '';
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    SharedPreferences.getInstance().then((value){
+      setState(() {
+        name = value.getString('name');
+      });
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _drawerKey,
+      endDrawerEnableOpenDragGesture: false,
+      endDrawer: EndDrawer(),
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
@@ -22,7 +38,10 @@ class _HomeState extends State<Home> {
         ),
         actions: [
           FlatButton.icon(
-              onPressed: () {},
+              onPressed: () {
+                print(_drawerKey.currentState);
+                _drawerKey.currentState.openEndDrawer();
+              },
               icon: Icon(
                 Icons.menu,
               ),
@@ -39,7 +58,7 @@ class _HomeState extends State<Home> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Halo Alief,",
+                      "Halo "+name+",",
                       style:
                           TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                     ),
@@ -53,30 +72,35 @@ class _HomeState extends State<Home> {
                   ],
                 )),
             Container(
-              child: Container(
-                margin: EdgeInsets.only(top: 8),
-                padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                height: 50,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Cari kosa kata",
-                      style: TextStyle(color: Colors.grey),
-                    ),
-                    CircleAvatar(
-                      backgroundColor: Colors.deepPurpleAccent,
-                      child: Icon(
-                        Icons.search,
-                        color: Colors.white,
+              child: InkWell(
+                onTap: (){
+                  Navigator.pushNamed(context, '/kamus');
+                },
+                child: Container(
+                  margin: EdgeInsets.only(top: 8),
+                  padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                  height: 50,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Cari kosa kata",
+                        style: TextStyle(color: Colors.grey),
                       ),
-                    ),
-                  ],
+                      CircleAvatar(
+                        backgroundColor: Colors.deepPurpleAccent,
+                        child: Icon(
+                          Icons.search,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -144,6 +168,104 @@ class _HomeState extends State<Home> {
             )
           ],
         ),
+      ),
+    );
+  }
+}
+
+class EndDrawer extends StatelessWidget {
+  const EndDrawer({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        children: <Widget>[
+          SafeArea(
+            child: Column(
+              children: <Widget>[
+                Container(
+                  height: MediaQuery.of(context).size.height / 1.4,
+                ),
+                InkWell(
+                  child: ListTile(
+                    title: Text(''),
+                  ),
+                  onTap: () async {
+//                          Navigator.pop(context);
+//                            Navigator.pushNamed(context, 'ganti-password');
+                  },
+                ),
+                Divider(
+                  height: 1,
+                ),
+                InkWell(
+                  child: ListTile(
+                    leading: Icon(Icons.exit_to_app),
+                    title: Text('Keluar'),
+                  ),
+                  onTap: () async {
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            title: Text("Keluar"),
+                            content: Text("Apakah anda yakin?"),
+                            actions: <Widget>[
+                              FlatButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Text(
+                                  "Batal",
+                                  style: TextStyle(color: Colors.black),
+                                ),
+                              ),
+                              FlatButton(
+                                onPressed: () async {
+                                  showDialog(
+                                      context: context,
+                                      builder: (dialogContex) {
+                                        return WillPopScope(
+                                          onWillPop: () async => false,
+                                          child: Center(
+                                            child: Card(
+                                              child: Container(
+                                                width: 80,
+                                                height: 80,
+                                                padding: EdgeInsets.all(
+                                                    12.0),
+                                                child:
+                                                CircularProgressIndicator(),
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      });
+                                  bool res =
+                                  await locator<LoginProvider>()
+                                      .logout();
+                                  if (res) {
+                                    Navigator.of(context)
+                                        .pushNamedAndRemoveUntil(
+                                        '/login',
+                                            (Route<dynamic> route) =>
+                                        false);
+                                  }
+                                },
+                                child: Text("Keluar"),
+                              )
+                            ],
+                          );
+                        });
+                  },
+                ),
+              ],
+            ),
+          )
+        ],
       ),
     );
   }
