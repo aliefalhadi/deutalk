@@ -35,7 +35,7 @@ class _KamusIndexState extends State<KamusIndex> {
       builder: (context, provider, child) {
         return Scaffold(
           appBar: AppBar(
-            title: Text("Kamus Jepang"),
+            title: Text("Kamus Bahasa Jerman"),
             bottom: PreferredSize(
               preferredSize: Size.fromHeight(80),
               child: Container(

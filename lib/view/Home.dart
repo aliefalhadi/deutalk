@@ -2,6 +2,7 @@ import 'package:deutalk/config/locator.dart';
 import 'package:deutalk/constants/Dictionary.dart';
 import 'package:flutter/material.dart';
 import 'package:deutalk/provider/LoginProvider.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Home extends StatefulWidget {
@@ -66,7 +67,7 @@ class _HomeState extends State<Home> {
                       height: 8,
                     ),
                     Text(
-                      "Ayo tingkatkan skill bahasa jerman kamu",
+                      "Ayo tingkatkan skill bahasa Jerman kamu",
                       style: TextStyle(color: Colors.grey),
                     ),
                   ],
@@ -123,6 +124,7 @@ class _HomeState extends State<Home> {
                     children: [
                       MenuContainer(
                         title: Dictionary.menuKamus,
+                        subtitle: "Daftar kata",
                         image: Dictionary.imageMenuKamus,
                         color: Colors.deepPurple,
                         onTap: () {
@@ -131,6 +133,7 @@ class _HomeState extends State<Home> {
                       ),
                       MenuContainer(
                         title: Dictionary.menuBelajar,
+                        subtitle: "Modul pembelajaran",
                         image: Dictionary.imageMenuBelajar,
                         color: Colors.blueAccent,
                         onTap: () {
@@ -147,6 +150,7 @@ class _HomeState extends State<Home> {
                     children: [
                       MenuContainer(
                         title: Dictionary.menuLatihan,
+                        subtitle: "Pengucapan bahasa Jerman",
                         image: Dictionary.imageMenuLatihan,
                         color: Colors.pink,
                         onTap: () {
@@ -155,10 +159,38 @@ class _HomeState extends State<Home> {
                       ),
                       MenuContainer(
                         title: Dictionary.menuPanduan,
+                        subtitle: "Aplikasi",
                         image: Dictionary.imageMenuPanduan,
                         color: Colors.indigo,
                         onTap: () {
-                          print('halo');
+                          Alert(
+                            context: context,
+                            type: AlertType.none,
+                            title: "PANDUAN APLIKASI",
+                            content: Column(
+                              children: [
+                                Text("Aplikasi pembelajaran Bahasa Jerman ini memiliki materi pembelajaran berasal dari buku \"Jago Kuasai Bahasa Jerman\" yang ditulis oleh Dian Dwi Anisa dan Cindhy Dwi Meidany", textAlign: TextAlign.justify, style: Theme.of(context).textTheme.bodyText1,),
+                                SizedBox(height: 8,),
+                                Text("Aplikasi ini memiliki 6 sub menu materi yang terdiri dari kata sambung, kata bantu, kata sifat, kata ganti tunjuk, kata kerja dan kata benda.", textAlign: TextAlign.justify, style: Theme.of(context).textTheme.bodyText1,),
+                                SizedBox(height: 8,),
+                                Text("Dibawah ini adalah panduan menggunakan aplikasi:", textAlign: TextAlign.justify, style: Theme.of(context).textTheme.bodyText1,),
+                                Text("1. Pengguna aplikasi login menggunakan akun google.", textAlign: TextAlign.justify, style: Theme.of(context).textTheme.bodyText1,),
+                                Text("2. pengguna bisa belajar materi pada menu belajar.", textAlign: TextAlign.justify, style: Theme.of(context).textTheme.bodyText1,),
+                                Text("3. Penguna bisa melihat kosa kata bahasa Jerman pada menu kamus.", textAlign: TextAlign.justify, style: Theme.of(context).textTheme.bodyText1,),
+                                Text("4. Pengguna bisa menyelesaikan semua kategori latihan pengucapakan pada menu latihan.", textAlign: TextAlign.justify, style: Theme.of(context).textTheme.bodyText1,),
+                              ],
+                            ),
+                            buttons: [
+                              DialogButton(
+                                child: Text(
+                                  "OK",
+                                  style: TextStyle(color: Colors.white, fontSize: 20),
+                                ),
+                                onPressed: () => Navigator.pop(context),
+                                width: 120,
+                              )
+                            ],
+                          ).show();
                         },
                       ),
                     ],
@@ -274,10 +306,11 @@ class EndDrawer extends StatelessWidget {
 class MenuContainer extends StatelessWidget {
   final String image;
   final String title;
+  final String subtitle;
   final Function onTap;
   final Color color;
 
-  MenuContainer({this.image, this.title, this.onTap, this.color});
+  MenuContainer({this.image, this.title, this.onTap, this.color, this.subtitle});
 
   @override
   Widget build(BuildContext context) {
@@ -306,7 +339,7 @@ class MenuContainer extends StatelessWidget {
                         color: Colors.white),
                   ),
                   Text(
-                    "Daftar kata",
+                    subtitle,
                     style: TextStyle(fontSize: 11, color: Colors.white),
                   )
                 ],
