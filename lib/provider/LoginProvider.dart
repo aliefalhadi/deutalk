@@ -18,7 +18,9 @@ class LoginProvider extends BaseProvider {
 
   Future login() async {
     try {
+      print('asd');
       await _googleSignIn.signIn();
+
 
       SharedPreferences sharedPreferences =
           await SharedPreferences.getInstance();

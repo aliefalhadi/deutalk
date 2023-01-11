@@ -1,15 +1,16 @@
 import 'dart:async';
 import 'dart:io';
+
 import 'package:deutalk/config/locator.dart';
+import 'package:deutalk/services/ApiInterceptors.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_http_cache/dio_http_cache.dart';
-import 'package:deutalk/services/ApiInterceptors.dart';
 
 class Service {
   String uri = '';
   Dio dio = locator<ApiInterceptors>().dio;
 
-  String baseUrl = 'http://api.jerman.aiiviii.biz.id/v1';
+  String baseUrl = 'http://api.france.intermediasolution.com/v1';
 
   Future getWithCache(String url,
       {Duration duration,

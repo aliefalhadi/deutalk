@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_tts/flutter_tts.dart';
 import 'package:deutalk/config/locator.dart';
 import 'package:deutalk/model/DaftarModulBelajarModel.dart';
 import 'package:deutalk/services/EventBusService.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 class DetailModulBelajar extends StatefulWidget {
   final int indexModulbelajar;
@@ -70,7 +70,7 @@ class _DetailModulBelajarState extends State<DetailModulBelajar> {
                         child: Icon(Icons.volume_up),
                         onTap: () async {
                           FlutterTts flutterTts = FlutterTts();
-                          await flutterTts.setLanguage("de-DE");
+                          await flutterTts.setLanguage("fr-FR");
                           await flutterTts.setSpeechRate(1.0);
                           await flutterTts.setPitch(0.3);
                           await flutterTts.speak(datumBelajar.speechText);

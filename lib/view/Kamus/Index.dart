@@ -1,10 +1,10 @@
 import 'package:deutalk/config/appTheme.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_tts/flutter_tts.dart';
+import 'package:deutalk/constants/ViewState.dart';
 import 'package:deutalk/model/DaftarKataModel.dart';
 import 'package:deutalk/provider/KamusProvider.dart';
-import 'package:deutalk/constants/ViewState.dart';
 import 'package:deutalk/view/BaseView.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 class KamusIndex extends StatefulWidget {
   @override
@@ -35,7 +35,7 @@ class _KamusIndexState extends State<KamusIndex> {
       builder: (context, provider, child) {
         return Scaffold(
           appBar: AppBar(
-            title: Text("Kamus Bahasa Jerman"),
+            title: Text("Kamus Bahasa Prancis"),
             bottom: PreferredSize(
               preferredSize: Size.fromHeight(80),
               child: Container(
@@ -143,7 +143,7 @@ class _KamusIndexState extends State<KamusIndex> {
                                             FlutterTts flutterTts =
                                                 FlutterTts();
                                             await flutterTts
-                                                .setLanguage("de-DE");
+                                                .setLanguage("fr-FR");
                                             await flutterTts.setSpeechRate(1.0);
                                             await flutterTts.setPitch(0.3);
                                             var result = await flutterTts

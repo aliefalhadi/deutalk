@@ -1,12 +1,13 @@
 import 'dart:convert';
 import 'dart:developer';
+
 import 'package:avatar_glow/avatar_glow.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_tts/flutter_tts.dart';
 import 'package:deutalk/config/locator.dart';
 import 'package:deutalk/model/DaftarSoalModulLatihanModel.dart';
 import 'package:deutalk/services/EventBusService.dart';
 import 'package:deutalk/services/LatihanService.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 import 'package:material_dialogs/material_dialogs.dart';
 import 'package:material_dialogs/widgets/buttons/icon_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -78,7 +79,7 @@ class _JawabSoalLatihanState extends State<JawabSoalLatihan> {
                         child: Icon(Icons.volume_up),
                         onTap: () async {
                           FlutterTts flutterTts = FlutterTts();
-                          await flutterTts.setLanguage("de-DE");
+                          await flutterTts.setLanguage("fr-FR");
                           await flutterTts.setSpeechRate(1.0);
                           await flutterTts.setPitch(0.3);
                           await flutterTts.speak(dataSoal.textJerman);
@@ -119,7 +120,7 @@ class _JawabSoalLatihanState extends State<JawabSoalLatihan> {
       if (available) {
         setState(() => _isListening = true);
         _speech.listen(
-          localeId: 'de_DE',
+          localeId: 'fr_FR',
           onResult: (val) => setState(() {
             _text = val.recognizedWords;
           }),
@@ -153,7 +154,7 @@ class _JawabSoalLatihanState extends State<JawabSoalLatihan> {
         bool cekKataPengucapan = false;
         log(_text, name: 'text');
         log(dataSoal.textJerman, name: 'text2');
-        if (_text == dataSoal.textJerman.toLowerCase()) {
+        if (_text.toLowerCase() == dataSoal.textJerman.toLowerCase()) {
           cekKataPengucapan = true;
         }
         if (cekKataPengucapan) {

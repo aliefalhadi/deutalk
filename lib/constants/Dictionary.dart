@@ -1,5 +1,5 @@
 class Dictionary {
-  static String appName = 'DeuTalk';
+  static String appName = 'PrancisApp';
   static String menuKamus = "Kamus";
   static String imageMenuKamus = "assets/images/kamus3.png";
   static String menuBelajar = "Belajar";
